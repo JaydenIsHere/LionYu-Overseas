@@ -1,0 +1,136 @@
+.footer {
+  background-color: #000;
+  padding: 3rem 2rem 2.5rem;
+  color: #fff;
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1.2fr;
+  gap: 2rem 3rem;
+  align-items: center;
+}
+
+.footer-column {
+  line-height: 1.7;
+}
+
+/* Left about section */
+.about-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-title {
+  font-size: 1.3rem;
+  margin-bottom: 1.1rem;
+  font-weight: 700;
+  color: #c48a2d;
+}
+
+.footer-column p {
+  font-size: 1rem;
+  color: #ddd;
+  text-align: left;
+}
+
+.center-title {
+  text-align: center;
+  width: 100%;
+}
+
+/* Center social icons column */
+.social-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.social-icon {
+  font-size: 2rem;
+  color: #fff;
+  transition: color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-icon:hover {
+  color: #c48a2d;
+}
+
+/* Right logo section */
+.logo-column {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.footer-logo {
+  max-width: 12rem;
+  height: auto;
+}
+
+/* Sub-footer (copyright bar) */
+.sub-footer {
+  background-color: #333333;
+  color: #fff;
+  padding: 1rem 1rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1rem;
+  font-family: "Noto Sans TC", sans-serif;
+}
+.createdBy {
+  margin: 0;
+}
+.brand-name {
+  color: #c48a2d;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem 1rem;
+  }
+  .logo-column {
+    justify-content: flex-end;
+    margin-top: 2rem;
+  }
+  .about-column {
+    align-items: flex-start;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem 1rem;
+  }
+  .logo-column,
+  .about-column,
+  .social-column {
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  .about-column p {
+    text-align: center;
+  }
+  .social-icons {
+    justify-content: center;
+  }
+}

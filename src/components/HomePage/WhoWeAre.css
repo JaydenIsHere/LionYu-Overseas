@@ -1,0 +1,182 @@
+.brand-section {
+  width: 100%;
+  background: #fff;
+  padding: 2.5rem 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  min-height: 700px;
+}
+
+.brand-content {
+  display: flex;
+  width: 90%;
+  max-width: 1100px;
+  align-items: stretch;
+  gap: 2.5rem;
+  box-sizing: border-box;
+  flex-wrap: nowrap;
+}
+
+.brand-text {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 530px;
+  color: #000000;
+}
+
+.brand-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #c48a2d;
+}
+
+.brand-sub {
+  font-size: 1.13rem;
+  margin-bottom: 0.7rem;
+  font-weight: 600;
+}
+
+.brand-lead {
+  margin-bottom: 1rem;
+  font-size: 1.07rem;
+}
+
+.brand-desc {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+}
+
+.brand-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1.08rem;
+}
+
+.brand-list li {
+  color: #000000;
+  background-color: #faf6ef;
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 0.9rem;
+}
+
+.brand-carousel {
+  flex: 1 1 0;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  display: flex;
+  align-items: center;
+  position: relative;
+  max-width: 530px;
+
+  height: 100%;
+  min-height: 400px;
+  width: 100%;
+}
+
+.carousel-track {
+  display: flex;
+  width: calc(100% * 4); /* 根據圖片數量調整，如果有2張圖就4倍 */
+  transition: transform 0.7s ease-in-out;
+}
+
+.brand-img {
+  flex-shrink: 0;
+  object-fit: contain;
+  border-radius: 12px;
+  width: 100%;
+  height: 600px;
+  max-height: 90vh;
+  margin: 0 auto;
+  display: block;
+}
+
+/* 手機及平板版，輪播在上，圖片顯示完整，比例不變 */
+@media (max-width: 900px) {
+  .brand-content {
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 98vw;
+    height: auto;
+  }
+  .brand-carousel {
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: unset;
+  }
+  .carousel-track {
+    width: calc(100% * 4) !important;
+  }
+  .carousel-track img,
+  .brand-img {
+    object-fit: contain !important;
+    height: 400px !important;
+    width: 100% !important;
+    max-height: 90vh !important;
+  }
+  .brand-text {
+    max-width: 100vw;
+    padding: 1rem 1rem;
+  }
+  .brand-title {
+    font-size: 1.25rem;
+  }
+}
+
+/* iPad 特定寬度區段寬度調整 */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .brand-content {
+    flex-direction: row; /* 並排 */
+    gap: 2rem;
+    max-width: 98vw;
+    height: auto;
+  }
+  .brand-text {
+    flex: 0 0 48%;
+    max-width: 48%;
+    padding: 2rem;
+  }
+  .brand-carousel {
+    flex: 0 0 50%;
+    max-width: 50%;
+    height: auto;
+    min-height: 500px; /* 讓圖片高一些 */
+    background: #eaf5ff;
+  }
+  .brand-img {
+    height: 100%;
+    max-height: 480px;
+    width: auto !important;
+    max-width: 100% !important;
+    object-fit: contain !important;
+  }
+}
+
+
+/* 手機更小螢幕調整 */
+@media (max-width: 480px) {
+  .brand-title {
+    font-size: 1rem;
+  }
+  .brand-sub,
+  .brand-lead,
+  .brand-desc,
+  .brand-list li {
+    font-size: 0.9rem;
+  }
+  .brand-carousel {
+    min-height: 320px !important;
+  }
+}

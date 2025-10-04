@@ -1,0 +1,101 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: #fff;
+}
+
+.expenses-section {
+  background-color: #fff;
+  width: 100vw;
+  max-width: 100%;
+  min-height: 100vh;
+  padding: 48px 24px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.expenses-section h2 {
+  color: #c48a2d;
+  font-weight: 700;
+  font-size: 2.4rem;
+  margin-bottom: 32px;
+  text-align: center;
+  width: 100%;
+}
+
+.intro-text {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin-bottom: 36px;
+  max-width: 720px;
+  text-align: justify;
+  color: #000;
+}
+
+.expenses-table-wrapper {
+  width: 100%;
+  overflow-x: visible; /* 取消橫向滾動 */
+}
+
+.expenses-table {
+  margin: 0 auto;
+  width: 70%;
+  border-collapse: collapse;
+  text-align: center;
+  /* 移除min-width以防滾動條 */
+}
+
+.expenses-table thead th {
+  background-color: #c48a2d;
+  color: white;
+  font-weight: 700;
+  padding: 14px 12px;
+  border-radius: 4px 4px 0 0;
+}
+
+.expenses-table tbody tr:nth-child(odd) {
+  background-color: #f9f5f0;
+}
+
+.expenses-table tbody td {
+  padding: 14px 12px;
+  border-bottom: 1px solid #ddd;
+  font-size: 1rem;
+  color: #222;
+
+  /* 斷行設置，允許內容換行 */
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.expenses-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* 手機優化 */
+@media (max-width: 720px) {
+  .expenses-section {
+    padding: 32px 16px;
+  }
+  .expenses-section h2 {
+    font-size: 1.6rem;
+    margin-bottom: 24px;
+  }
+  .intro-text {
+    font-size: 1rem;
+    margin-bottom: 28px;
+    max-width: 100%;
+  }
+  .expenses-table thead th,
+  .expenses-table tbody td {
+    padding: 12px 8px;
+    font-size: 0.9rem;
+  }
+}

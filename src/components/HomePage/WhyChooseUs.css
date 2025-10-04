@@ -1,0 +1,43 @@
+.why-choose-us-section {
+  background-color: #fff9f0;
+  padding: 3rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.why-container {
+  max-width: 900px;
+  width: 100%;
+  text-align: left;
+}
+
+.why-title {
+  font-size: 2.2rem;
+  color: #c48a2d;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.why-list {
+  list-style: none;
+  padding: 0;
+}
+
+.why-item {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  color: #4a4a4a;
+  display: flex;
+  align-items: flex-start;
+}
+
+.why-icon {
+  color: #c48a2d;
+  font-weight: 900;
+  margin-right: 0.8rem;
+  font-size: 1.3rem;
+  line-height: 1.2;
+  user-select: none;
+}

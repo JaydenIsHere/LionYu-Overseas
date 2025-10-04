@@ -1,0 +1,115 @@
+.pointers-section {
+  background: #fff;
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 48px 0 64px 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pointers-section h2 {
+  color: #c48a2d;
+  font-size: 2.3rem;
+  font-weight: 700;
+  margin-bottom: 44px;
+  text-align: center;
+  width: 100%;
+  max-width: 1100px;
+}
+
+.pointers-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 38px;
+  width: 80vw;         /* 主要控制兩卡片區寬佔整體螢幕80% */
+  max-width: 1100px;
+  box-sizing: border-box;
+  padding: 0 0;
+  background: none;
+}
+
+.pointer-card {
+  /* 無背景、無陰影，讓卡片本身透明，只呈現內容 */
+  padding: 0 18px 0 18px;
+  width: calc(50% - 19px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  background: none;
+  border: none;
+}
+
+.pointer-card img {
+  width: 30rem;             /* 圖片寬度 */
+  height: 20rem;            /* 圖片高度 */
+  aspect-ratio: 1 / 1;      /* 強制 1:1 比例，維持正方形 */
+  object-fit: cover;        /* 填滿區塊，自動裁切圖片多餘部份 */
+  margin-bottom: 26px;
+  margin-top: 6px;
+  border-radius: 8px;       /* 圖片可不設也行，視覺更美觀 */
+  background: #f2f2f2;      /* 預防圖片加載慢時閃爍 */
+}
+.pointer-title {
+  font-size: 1.32rem;
+  font-weight: 700;
+  color: #c48a2d;
+  margin-bottom: 20px;
+}
+
+.pointer-desc {
+  font-size: 1.11rem;
+  line-height: 1.7;
+  color: #000;
+}
+
+/* 響應式手機版為單欄，加大padding、圖片不要溢出螢幕 */
+@media (max-width: 900px) {
+  .pointers-container {
+    width: 96vw;
+    gap: 22px;
+  }
+  .pointer-card {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 6vw;
+  }
+  .pointer-card img {
+    width: 200px;
+    height: 140px;
+  }
+}
+
+@media (max-width: 600px) {
+  .pointers-section {
+    padding: 26px 0 32px 0;
+  }
+  .pointers-section h2 {
+    font-size: 1.18rem;
+    margin-bottom: 26px;
+  }
+  .pointers-container {
+    gap: 12px;
+    width: 98vw;
+    max-width: 100%;
+  }
+  .pointer-card {
+    padding: 10px 10vw;
+  }
+  .pointer-title {
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+  }
+  .pointer-card img {
+    width: 270px;
+    height: 120px;
+  }
+  .pointer-desc {
+    font-size: 0.95rem;
+  }
+}

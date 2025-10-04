@@ -1,0 +1,155 @@
+.ws-section {
+  background: #fff;
+  width: 100%;
+  /* Use min-height or remove fixed height to allow natural growth */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+  box-sizing: border-box;
+}
+
+.ws-row {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  width: 90%;
+  max-width: 1100px;
+  align-items: stretch; /* Make children equal height */
+  justify-content: center;
+  height: 650px; /* Fixed height for equal card and slideshow */
+  margin: 2rem;
+  box-sizing: border-box;
+}
+
+.ws-col {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.ws-slideshow {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  box-sizing: border-box;
+}
+
+.ws-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Crop and fill container */
+  border-radius: 12px;
+  display: block;
+}
+
+.ws-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  padding: 2rem 2rem;
+  max-width: 450px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.ws-title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+
+.ws-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1.15rem;
+  color: #222;
+}
+
+.ws-list li {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.ws-col .ws-card button,
+.ws-more-btn {
+  margin-top: 1.5rem;
+  background: #c48a2d; /* 自定義主要配色，也可改為 #fff 或其他與主背景一致 */
+  color: #fff;
+  font-size: 1.05rem;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgb(0 0 0 / 0.10);
+  transition: background 0.2s;
+}
+
+.ws-col .ws-card button:hover,
+.ws-more-btn:hover {
+  background: #c48a2d; /* 主題色加深，hover效果 */
+}
+
+
+@media (max-width: 900px) {
+  .ws-row {
+    flex-direction: column;
+    height: auto;
+    gap: 2rem;
+    margin: 0;
+    max-width: 100vw;
+  }
+  .ws-col {
+    height: auto; /* Allow natural height */
+    min-height: unset;
+  }
+  .ws-slideshow {
+    width: 100%;
+    height: 250px;  /* Keep this explicit! */
+    min-height: 200px;
+    max-width: 100vw;
+  }
+  .ws-img {
+    width: 100%;
+    height: 100%;
+    min-height: 150px;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+  }
+  .ws-card {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    min-height: unset;
+    padding: 1.5rem 1rem;
+    box-sizing: border-box;
+  }
+  .ws-title {
+    font-size: 1.6rem;
+  }
+}
+
+
+/* Small screen typography */
+@media (max-width: 480px) {
+  .ws-title {
+    font-size: 1.4rem;
+  }
+  .ws-list li {
+    font-size: 1rem;
+  }
+}

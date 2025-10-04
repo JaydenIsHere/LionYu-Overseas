@@ -1,0 +1,63 @@
+/* 讓html和body滿版，避免頁面因margin/padding產生空白 */
+
+.study-singapore-section {
+  background-color: #fff9f0;
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 12rem 10rem;
+  box-sizing: border-box;
+
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.text-container {
+  flex: 1;
+  color: #000;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.text-container h2 {
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 24px;
+  color: #c48a2d;
+}
+
+.image-container {
+  flex: 1;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* 手機響應式，改為上下排列 */
+@media (max-width: 768px) {
+  .study-singapore-section {
+    flex-direction: column;
+    padding: 30px 16px;
+    min-height: auto;
+  }
+  .text-container,
+  .image-container {
+    width: 100%;
+  }
+  .text-container {
+    margin-bottom: 24px;
+  }
+}
+
+@media (max-width: 500px){
+    .study-singapore-section {
+        padding: 8rem 2rem;
+    }
+} 

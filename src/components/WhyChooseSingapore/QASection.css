@@ -1,0 +1,87 @@
+.qa-section {
+  max-width: 900px;
+  margin: 64px auto;
+  padding: 0 24px;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.qa-section h2 {
+  color: #c48a2d;
+  font-weight: 700;
+  font-size: 2.4rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* 問答容器 */
+.qa-container {
+  border-top: 1px solid #ddd;
+}
+
+/* 每個問題項 */
+.qa-item + .qa-item {
+  border-top: 1px solid #ddd;
+}
+
+/* 問題標題按鈕 */
+.qa-question {
+  background: transparent;
+  border: none;
+  width: 100%;
+  padding: 18px 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #444;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: color 0.3s ease;
+  outline: none;
+}
+
+.qa-question:hover,
+.qa-question.open {
+  color: #c48a2d;
+}
+
+/* 箭頭 */
+.arrow {
+  font-size: 1.3rem;
+  transition: transform 0.3s ease;
+  user-select: none;
+}
+
+.qa-question.open .arrow {
+  transform: rotate(180deg);
+}
+
+/* 答案區塊 */
+.qa-answer {
+  padding: 0 1rem 18px 1rem;
+  color: #222;
+  font-size: 1rem;
+  line-height: 1.6;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+/* 淡入效果 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 720px) {
+    .qa-section {
+
+  margin: 0 auto 64px 0;
+  padding: 0 24px;
+    }
+}

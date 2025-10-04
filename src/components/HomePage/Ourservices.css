@@ -1,0 +1,147 @@
+.services-container {
+  position: relative;
+  /* Add your background image here! */
+  background: url('../../images/OurService.jpg') center center/cover no-repeat #000000;
+  min-height: 600px; /* Increased height for more space */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 1rem 3rem 1rem;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+/* Optional: semi-transparent overlay for better card/readability on background */
+.services-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 6, 6, 0.76); /* can adjust opacity */
+  z-index: 0;
+  pointer-events: none;
+}
+
+.main-services-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1.2rem;
+  text-align: center;
+  letter-spacing: 0.04em;
+  position: relative;
+  z-index: 1;
+  color: #f3f3f3;
+  text-shadow: 0 3px 14px rgba(0,0,0,0.55), 
+               0 1px 3px rgba(0,0,0,0.16); /* primary drop shadow and gentle edge */
+}
+
+
+.subtitle-row {
+  margin-top: 2.5rem;
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.3rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Subtitle style */
+.services-subtitle {
+  background-color: #c48a2d;
+  color: #f3f3f3;
+  font-size: 1.13rem;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 0.15em 1.5em;
+  margin-left: 0;
+  text-align: left;
+  box-shadow: 0 2px 8px rgba(196,138,45,0.14);
+  position: relative;
+  z-index: 1;
+}
+
+.services-steps {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;   /* This centers all cards horizontally! */
+  gap: 1.2rem;
+  max-width: 1000px;
+  width: 100%;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.service-card {
+  background-color: #f5f5f5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 1rem;
+  padding: 1.2rem 1rem;
+  flex: 1 1 220px;
+  max-width: 260px;
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+.service-card:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+.step-number {
+  background-color: #c48a2d;
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.4rem;
+}
+
+/* Responsive: subtitle centered, two cards per row */
+@media (max-width: 768px) {
+  .main-services-title {
+    font-size: 3rem;
+    margin-bottom: 0.8rem;
+  }
+  .subtitle-row {
+    justify-content: center;
+    margin-bottom: 1rem;
+    max-width: 100%;
+  }
+  .services-steps {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.1rem;
+  }
+  .service-card {
+    flex: 0 0 calc(50% - 1.1rem);
+    max-width: calc(50% - 1.1rem);
+    min-width: 110px;
+    padding: 1rem 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-services-title {
+    font-size: 2.5rem;
+  }
+  .services-steps {
+    gap: 0.7rem;
+  }
+  .service-card {
+    font-size: 0.97rem;
+    padding: 0.7rem 0.55rem;
+    min-width: 90px;
+  }
+}
