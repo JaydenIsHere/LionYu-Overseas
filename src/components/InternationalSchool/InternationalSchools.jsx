@@ -76,7 +76,7 @@ const schools = [
   zhName: "加慧世界書院",
   enName: "XCL World Academy (XWA)",
   description:
-    "XCL World Academy是新加坡領先的IB國際學校，涵蓋18個月至18歲學生，學生代表40多個國籍。提供IB PYP、MYP、DP等連續課程，並以小班、雙師制和跨學科創新（AI、機器人、編程課程）著稱，協助學生在學術、領導力、全球素養等面向全面發展。近年IB畢業生成績、升學率及獎學金表現均領先全球,最新校園設施完善",
+    "XCL World Academy是新加坡領先的IB國際學校，涵蓋18個月至18歲學生，學生代表40多個國籍。提供IB PYP、MYP、DP等連續課程，並以小班、雙師制和跨學科創新（AI、機器人、編程課程）著稱，協助學生在學術、領導力、全球素養等面向全面發展。近年IB畢業生成績、升學率及獎學金表現均領先全球,最新校園設施完善。",
   address: "2 Yishun Street 42, Singapore 768639",
   website: "https://xwa.edu.sg",
   images: [XCL0, XCL1, XCL2, XCL3, XCL4, XCL5, XCL6],
