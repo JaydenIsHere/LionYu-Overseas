@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Localmain.css';
+import './LocalMain.css';
 import local1 from '../../images/local1.jpg';
 import local2 from '../../images/local2.jpg';
 import local3 from '../../images/local3.jpg';
