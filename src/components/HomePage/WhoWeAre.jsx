@@ -3,8 +3,9 @@ import './WhoWeAre.css';
 
 import img1 from '../../images/WhoWeAre1.jpeg';
 import img2 from '../../images/WhoWeAre2.jpeg';
+import img3 from '../../images/WhoWeAre3.jpeg';
 
-const carouselImages = [img1, img2];
+const carouselImages = [img1, img2, img3];
 
 export default function WhoWeAre() {
   const [idx, setIdx] = useState(0);

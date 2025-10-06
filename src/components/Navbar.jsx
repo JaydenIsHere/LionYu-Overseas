@@ -71,32 +71,23 @@ const Navbar = () => {
             }`}
           >
             <a
-              href='/#preschool'
-              onClick={() => {
-                handleClose();
-                scrollToSection('preschool');
-              }}
+              href='/local-schools'
+              onClick={() => navigate("/local-schools")}
             >
-              幼兒教育
+              本地教育
             </a>
             <a
-              href='/#primary'
-              onClick={() => {
-                handleClose();
-                scrollToSection('primary');
-              }}
+              href='/international-schools'
+              onClick={() => navigate("/international-schools")}
             >
-              小學教育
+              國際教育
             </a>
             <a
-              href='/#secondary'
-              onClick={() => {
-                handleClose();
-                scrollToSection('secondary');
-              }}
+              href='/private-universities'
+              onClick={() => navigate("/private-universities")}
             >
-              中學教育
-            </a>
+              私立大學
+            </a> 
           </div>
         </div>
 
@@ -124,31 +115,10 @@ const Navbar = () => {
             }`}
           >
             <a
-              href='/#bilingual'
-              onClick={() => {
-                handleClose();
-                scrollToSection('bilingual');
-              }}
+              href='/Why-Choose-Singapore'
+              onClick={() => navigate("/Why-Choose-Singapore")}
             >
-              雙語環境
-            </a>
-            <a
-              href='/#safe'
-              onClick={() => {
-                handleClose();
-                scrollToSection('safe');
-              }}
-            >
-              安全社會
-            </a>
-            <a
-              href='/#global'
-              onClick={() => {
-                handleClose();
-                scrollToSection('global');
-              }}
-            >
-              全球認可
+              五大優勢
             </a>
           </div>
         </div>
