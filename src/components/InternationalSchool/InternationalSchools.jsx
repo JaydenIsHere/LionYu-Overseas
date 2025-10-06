@@ -8,11 +8,11 @@ import BC3 from "../../images/BC3.jpg";
 import BC4 from "../../images/BC4.jpg";
 import BClogo from "../../images/BClogo.jpg";
 
-import c1 from "../../images/c1.jpg";
-import c2 from "../../images/c2.jpg";
-import c3 from "../../images/c3.jpg";
-import c4 from "../../images/c4.jpg";
-import c5 from "../../images/c5.jpg";
+import cis1 from "../../images/c1.jpg";
+import cis2 from "../../images/c2.jpg";
+import cis3 from "../../images/c3.jpg";
+import cis4 from "../../images/c4.jpg";
+import cis5 from "../../images/c5.jpg";
 import CISlogo from "../../images/CISlogo.png";
 
 import o1 from "../../images/o1.jpg";
@@ -43,7 +43,7 @@ const schools = [
     description: "CIS是新加坡首屈一指的IB世界學校，擁有65+國籍超過3,000位學生，提供IB PYP、MYP、DP三大課程，強調多元文化、領導力和學術卓越，培育具國際視野的未來人才",
     address: "7 Jurong West Street 41, Singapore 649414",
     website: "https://www.cis.edu.sg",
-    images: [c1, c2, c3, c4, c5],
+    images: [cis1, cis2, cis3, cis4, cis5],
     logo: CISlogo,
   },
   {
