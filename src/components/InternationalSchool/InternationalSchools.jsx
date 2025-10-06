@@ -40,7 +40,7 @@ const schools = [
   {
     zhName: "加拿大國際學校",
     enName: "Canadian International School (CIS)",
-    description: "CIS是新加坡首屈一指的IB世界學校，擁有65+國籍超過3,000位學生，提供IB PYP、MYP、DP三大課程，強調多元文化、領導力和學術卓越，培育具國際視野的未來人才。",
+    description: "CIS是新加坡首屈一指的IB世界學校，擁有65+國籍超過3,000位學生，提供IB PYP、MYP、DP三大課程，強調多元文化、領導力和學術卓越，培育具國際視野的未來人才",
     address: "7 Jurong West Street 41, Singapore 649414",
     website: "https://www.cis.edu.sg",
     images: [c1, c2, c3, c4, c5],
