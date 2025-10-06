@@ -20,7 +20,7 @@ import psb3 from "../../images/psb3.jpg";
 import psb4 from "../../images/psb4.png";
 import psb5 from "../../images/psb5.png";
 import psb6 from "../../images/psb6.png";
-import psbLogo from "../../images/psbLogo.jpg"; 
+import psbLogo from "../../images/psblogo.jpg"; 
 
 
 import sim1 from "../../images/sim1.jpg";
