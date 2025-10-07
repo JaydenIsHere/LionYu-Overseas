@@ -10,7 +10,7 @@
   justify-content: space-between;
   padding: 20px 30px;
   background: #ffffff;
-  z-index: 10;
+  z-index: 99;
 }
 
 .logoImage {

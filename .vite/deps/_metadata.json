@@ -1,55 +1,61 @@
 {
-  "hash": "2cca058f",
+  "hash": "bba53823",
   "configHash": "6757dc0b",
-  "lockfileHash": "0ec42e42",
-  "browserHash": "2553280c",
+  "lockfileHash": "ae695baf",
+  "browserHash": "a420a576",
   "optimized": {
-    "@emailjs/browser": {
-      "src": "../../node_modules/@emailjs/browser/es/index.js",
-      "file": "@emailjs_browser.js",
-      "fileHash": "67c94190",
-      "needsInterop": false
-    },
-    "@fortawesome/free-solid-svg-icons": {
-      "src": "../../node_modules/@fortawesome/free-solid-svg-icons/index.mjs",
-      "file": "@fortawesome_free-solid-svg-icons.js",
-      "fileHash": "eb2d2a89",
-      "needsInterop": false
-    },
-    "@fortawesome/react-fontawesome": {
-      "src": "../../node_modules/@fortawesome/react-fontawesome/dist/index.js",
-      "file": "@fortawesome_react-fontawesome.js",
-      "fileHash": "97b08ab0",
-      "needsInterop": false
-    },
     "react": {
       "src": "../../node_modules/react/index.js",
       "file": "react.js",
-      "fileHash": "c668964f",
+      "fileHash": "531812ba",
       "needsInterop": true
     },
     "react-dom/client": {
       "src": "../../node_modules/react-dom/client.js",
       "file": "react-dom_client.js",
-      "fileHash": "e6662c62",
+      "fileHash": "ecec6184",
       "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.mjs",
+      "file": "react-router-dom.js",
+      "fileHash": "abe71ea1",
+      "needsInterop": false
     },
     "react-icons/fa": {
       "src": "../../node_modules/react-icons/fa/index.mjs",
       "file": "react-icons_fa.js",
-      "fileHash": "829e64a9",
+      "fileHash": "59212c26",
       "needsInterop": false
     },
     "react-icons/si": {
       "src": "../../node_modules/react-icons/si/index.mjs",
       "file": "react-icons_si.js",
-      "fileHash": "8fb56ec2",
+      "fileHash": "a5b2247e",
       "needsInterop": false
     },
-    "react-router-dom": {
-      "src": "../../node_modules/react-router-dom/dist/index.mjs",
-      "file": "react-router-dom.js",
-      "fileHash": "03355077",
+    "@fortawesome/react-fontawesome": {
+      "src": "../../node_modules/@fortawesome/react-fontawesome/dist/index.js",
+      "file": "@fortawesome_react-fontawesome.js",
+      "fileHash": "12595f18",
+      "needsInterop": false
+    },
+    "@fortawesome/free-solid-svg-icons": {
+      "src": "../../node_modules/@fortawesome/free-solid-svg-icons/index.mjs",
+      "file": "@fortawesome_free-solid-svg-icons.js",
+      "fileHash": "5ea4e80d",
+      "needsInterop": false
+    },
+    "react-google-recaptcha": {
+      "src": "../../node_modules/react-google-recaptcha/lib/esm/index.js",
+      "file": "react-google-recaptcha.js",
+      "fileHash": "a896279e",
+      "needsInterop": false
+    },
+    "@emailjs/browser": {
+      "src": "../../node_modules/@emailjs/browser/es/index.js",
+      "file": "@emailjs_browser.js",
+      "fileHash": "8891a6b8",
       "needsInterop": false
     }
   },

@@ -1,5 +1,4 @@
 .famous-schools-section {
-  
   margin: 0 auto;
   padding: 5rem 12px;
   background-color: #faf6ef;
@@ -17,7 +16,7 @@
   gap: 16px;
   max-width: 980px;
   margin: 0 auto;
-  overflow: hidden; /* Prevent scrollbar */
+  overflow: hidden;
   position: relative;
 }
 
@@ -110,34 +109,32 @@
   justify-content: center;
   align-items: center;
   z-index: 2500;
+  padding: 20px;
+  /* 不使用 overflow-y: auto，避免背景滾動 */
+  overflow-y: visible;
+  height: 100vh; /* 讓裡面容器有空間伸長 */
 }
 
 .modal-content {
   background: white;
-  width: 80vw;
-  max-width: 950px;
-  height: 70vh;
+  width: 90vw;
+  max-width: 480px;
+  height: auto; /* 自動高度適應內容 */
+  /* max-height: none; 不限制最大高度 */
   display: flex;
+  flex-direction: row; /* 桌面維持左右並排 */
   border-radius: 18px;
-  overflow: hidden;
-  position: relative;
+  overflow: visible;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 }
 
-.close-btn {
-  position: absolute;
-  right: 16px;
-  top: 16px;
-  background: transparent;
-  border: none;
-  font-size: 2.2rem;
-  cursor: pointer;
-  z-index: 10;
-}
-
+/* 桌面： 左右兩區 */
 .modal-left {
   flex: 1;
   padding: 24px 30px;
-  overflow-y: auto;
+  overflow: visible;  /* 移除滾動 */
+  display: flex;
+  flex-direction: column;
 }
 
 .modal-left h2 {
@@ -190,6 +187,7 @@
   user-select: none;
 }
 
+/* 圖片控制按鈕 */
 .modal-img-controls {
   margin-top: 14px;
   display: flex;
@@ -228,4 +226,49 @@
 
 .carousel-dot.active {
   background-color: #623401;
+}
+
+/* 平板和手機響應式 */
+@media screen and (max-width: 768px) {
+  .modal-content {
+    flex-direction: column; /* 上下排列 */
+    width: 90vw;
+    max-width: 95vw;
+    height: auto; /* 自動高度 */
+    max-height: none; /* 不限制最大高度 */
+  }
+
+  .modal-left,
+  .modal-right {
+    flex: none;
+    width: 100%;
+    padding: 16px;
+    overflow: visible; /* 不產生滾動條 */
+  }
+
+  .modal-right {
+    margin-top: 20px;
+    align-items: center;
+  }
+
+  .modal-img {
+    max-width: 100%;
+    max-height: none; /* 不限制高度 */
+  }
+}
+
+@media screen and (max-width: 500px) {
+  /* 小手機加強 */
+  .modal-content {
+    width: 95vw;
+    max-width: 95vw;
+    height: auto; /* 自動高度 */
+    max-height: none;
+  }
+
+  .modal-img {
+    width: 100%;
+    max-height: none;
+    height: auto;
+  }
 }
