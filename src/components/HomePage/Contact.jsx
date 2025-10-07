@@ -6,7 +6,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import { SiLine } from "react-icons/si";
 import lineQRCode from "../../images/LineQRCode.jpg";
 
-const RECAPTCHA_SITE_KEY = "6LdDzeErAAAAAEwoJgpzgbkoeh0YZG6Kwa-jx2_f"; // Google reCAPTCHA site key
+const RECAPTCHA_SITE_KEY = "6LdDzeErAAAAAEwoJgpzgbkoeh0YZG6Kwa-jx2_f";
 
 const ContactUs = () => {
   const form = useRef();
@@ -21,7 +21,7 @@ const ContactUs = () => {
     setStatusMsg("");
 
     try {
-      // Execute invisible reCAPTCHA and get token
+      // Get Google reCAPTCHA token
       const token = await recaptchaRef.current.executeAsync();
       recaptchaRef.current.reset();
 
@@ -31,14 +31,24 @@ const ContactUs = () => {
         return;
       }
 
-      // Put token inside hidden input field for EmailJS to send
-      form.current["g-recaptcha-response"].value = token;
+      const formData = new FormData(form.current);
 
-      // Send form including the captcha token to EmailJS
-      await emailjs.sendForm(
+      // Build template params manually including g-recaptcha-response token
+      const templateParams = {
+        name: formData.get("name"),
+        country: formData.get("country"),
+        age_group: formData.get("age_group"),
+        enrol_date: formData.get("enrol_date"),
+        how_found: formData.get("how_found"),
+        email: formData.get("email"),
+        message: formData.get("message") || "",
+        "g-recaptcha-response": token,
+      };
+
+      await emailjs.send(
         "service_80x6z4c",
         "template_xepo35a",
-        form.current,
+        templateParams,
         "fv9zS6Tde0WVeFASq"
       );
 
@@ -55,13 +65,13 @@ const ContactUs = () => {
   return (
     <section className="contact-section" id="contact">
       <div className="contact-container">
-        {/* 左側QR Code */}
+        {/* QR Code */}
         <div className="qr-code-container">
           <img src={lineQRCode} alt="Line Official QR Code" />
           <p>掃描加入官方LINE帳號</p>
         </div>
 
-        {/* 右側聯絡表單 */}
+        {/* Contact Form */}
         <div className="contact-methods">
           <h2 className="contact-title">聯絡我們</h2>
 
@@ -90,12 +100,18 @@ const ContactUs = () => {
             <p>填寫諮詢表單，專人1日內主動聯繫</p>
           </div>
 
-          {/* 送出狀態訊息 */}
           {statusMsg && <div className="status-message">{statusMsg}</div>}
 
           <form className="contact-form" ref={form} onSubmit={sendEmail}>
-            {/* Hidden reCAPTCHA input field for token */}
-            <input type="hidden" name="g-recaptcha-response" />
+
+            {/* Honeypot Hidden Field */}
+            <input
+              type="text"
+              name="hidden_field"
+              style={{ display: "none" }}
+              tabIndex="-1"
+              autoComplete="off"
+            />
 
             <div className="form-group">
               <label htmlFor="name">名字：</label>
@@ -183,13 +199,18 @@ const ContactUs = () => {
               />
             </div>
 
+            {/* Invisible reCAPTCHA */}
             <ReCAPTCHA
               sitekey={RECAPTCHA_SITE_KEY}
               size="invisible"
               ref={recaptchaRef}
             />
 
-            <button className="contact-submit" type="submit" disabled={isSubmitting}>
+            <button
+              className="contact-submit"
+              type="submit"
+              disabled={isSubmitting}
+            >
               {isSubmitting ? "送出中..." : "送出表單"}
             </button>
           </form>
