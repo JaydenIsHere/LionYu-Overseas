@@ -37,25 +37,14 @@ const ContactUs = () => {
         return;
       }
 
-      // 準備表單資料
-      const formData = new FormData(form.current);
-      const templateParams = {
-        name: formData.get("name"),
-        country: formData.get("country"),
-        age_group: formData.get("age_group"),
-        enrol_date: formData.get("enrol_date"),
-        how_found: formData.get("how_found"),
-        email: formData.get("email"),
-        message: formData.get("message") || "",
-        "g-recaptcha-response": token, // 可傳給後端驗證(reCAPTCHA token)
-      };
-
-      await emailjs.send(
+      // 使用 sendForm 自動從 form 取得資料並發送郵件
+      await emailjs.sendForm(
         "service_80x6z4c",
         "template_xepo35a",
-        templateParams,
+        form.current,
         "fv9zS6Tde0WVeFASq"
       );
+
       setStatusMsg("表單已成功送出，謝謝您的聯絡！");
       form.current.reset();
     } catch (error) {
@@ -108,7 +97,6 @@ const ContactUs = () => {
           {statusMsg && <div className="status-message">{statusMsg}</div>}
 
           <form className="contact-form" ref={form} onSubmit={sendEmail}>
-
             {/* Honeypot隱藏欄位 */}
             <input
               type="text"
