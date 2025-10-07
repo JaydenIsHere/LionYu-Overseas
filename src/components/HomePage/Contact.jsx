@@ -17,11 +17,11 @@ const ContactUs = () => {
   const sendEmail = async (e) => {
     e.preventDefault();
 
-    // Honeypot欄位，若有值判定為機器人阻擋
-    if (e.target.hidden_field.value !== "") {
-      setStatusMsg("系統偵測異常提交，請稍後再試。");
-      return;
-    }
+  // 暫時移除 Honeypot 測試
+  // if (e.target.hidden_field.value !== "") {
+  //   setStatusMsg("系統偵測異常提交，請稍後再試。");
+  //   return;
+  // }
 
     setIsSubmitting(true);
     setStatusMsg("");
