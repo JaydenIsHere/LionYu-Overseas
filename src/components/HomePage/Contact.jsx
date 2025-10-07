@@ -6,7 +6,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import { SiLine } from "react-icons/si";
 import lineQRCode from "../../images/LineQRCode.jpg";
 
-const RECAPTCHA_SITE_KEY = "6LcEluErAAAAABczZa-AdiQ-m2xoMy4Ux-Rakg-y"; // Google reCAPTCHA site key
+const RECAPTCHA_SITE_KEY = "6LdDzeErAAAAAEwoJgpzgbkoeh0YZG6Kwa-jx2_f"; // Google reCAPTCHA site key
 
 const ContactUs = () => {
   const form = useRef();
