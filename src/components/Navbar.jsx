@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom'; // 核心：引入 Link, useNavigate
 import './Navbar.css';
 import lionyulogo from '../images/lionyu.png';
 
 const Navbar = () => {
   const [click, setClick] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState(null); // keep track of which dropdown is open
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const navigate = useNavigate();
 
   const handleToggle = () => setClick(!click);
   const handleClose = () => {
     setClick(false);
-    setOpenDropdown(null); // close all dropdowns
+    setOpenDropdown(null);
   };
 
   const toggleDropdown = (menu) => {
-    // ✅ toggle open/close when same menu is clicked
-    setOpenDropdown((prev) => (prev === menu ? null : menu));
+    setOpenDropdown(prev => (prev === menu ? null : menu));
   };
 
   const scrollToSection = (id) => {
@@ -23,125 +24,106 @@ const Navbar = () => {
   };
 
   return (
-    <header className='header'>
-      <a href='/'>
-        <div className='logoImage'>
-          <img src={lionyulogo} alt='LionYu Logo' />
+    <header className="header">
+      <Link to="/">
+        <div className="logoImage">
+          <img src={lionyulogo} alt="LionYu Logo" />
         </div>
-      </a>
+      </Link>
 
       <div
-        id='menu-btn'
+        id="menu-btn"
         onClick={handleToggle}
         className={click ? 'fas fa-times' : 'fas fa-bars'}
       ></div>
 
       <nav className={click ? 'navbar active' : 'navbar'}>
-        <a
-          href='/#home'
+        <Link
+          to="/#home"
           onClick={() => {
             handleClose();
             scrollToSection('home');
           }}
-        >
-          主頁
-        </a>
+        >主頁</Link>
 
         {/* 教育體制 */}
         <div
-          className='nav-item'
-          onMouseEnter={() =>
-            window.innerWidth > 800 && setOpenDropdown('educationSystem')
-          }
-          onMouseLeave={() =>
-            window.innerWidth > 800 && setOpenDropdown(null)
-          }
+          className="nav-item"
+          onMouseEnter={() => window.innerWidth > 800 && setOpenDropdown('educationSystem')}
+          onMouseLeave={() => window.innerWidth > 800 && setOpenDropdown(null)}
         >
           <div
-            className='dropdown-toggle'
-            onClick={() =>
-              window.innerWidth <= 800 && toggleDropdown('educationSystem')
-            }
+            className="dropdown-toggle"
+            onClick={() => window.innerWidth <= 800 && toggleDropdown('educationSystem')}
           >
             教育體制
           </div>
           <div
-            className={`dropdown-menu ${
-              openDropdown === 'educationSystem' ? 'show' : ''
-            }`}
+            className={`dropdown-menu ${openDropdown === 'educationSystem' ? 'show' : ''}`}
           >
-            <a
-              href='/local-schools'
-              onClick={() => navigate("/local-schools")}
+            <Link
+              to="/local-schools"
+              onClick={handleClose}
             >
               本地教育
-            </a>
-            <a
-              href='/international-schools'
-              onClick={() => navigate("/international-schools")}
+            </Link>
+            <Link
+              to="/international-schools"
+              onClick={handleClose}
             >
               國際教育
-            </a>
-            <a
-              href='/private-universities'
-              onClick={() => navigate("/private-universities")}
+            </Link>
+            <Link
+              to="/private-universities"
+              onClick={handleClose}
             >
               私立大學
-            </a> 
+            </Link>
           </div>
         </div>
 
         {/* 教育優勢 */}
         <div
-          className='nav-item'
-          onMouseEnter={() =>
-            window.innerWidth > 800 && setOpenDropdown('educationAdvantage')
-          }
-          onMouseLeave={() =>
-            window.innerWidth > 800 && setOpenDropdown(null)
-          }
+          className="nav-item"
+          onMouseEnter={() => window.innerWidth > 800 && setOpenDropdown('educationAdvantage')}
+          onMouseLeave={() => window.innerWidth > 800 && setOpenDropdown(null)}
         >
           <div
-            className='dropdown-toggle'
-            onClick={() =>
-              window.innerWidth <= 800 && toggleDropdown('educationAdvantage')
-            }
+            className="dropdown-toggle"
+            onClick={() => window.innerWidth <= 800 && toggleDropdown('educationAdvantage')}
           >
             教育優勢
           </div>
           <div
-            className={`dropdown-menu ${
-              openDropdown === 'educationAdvantage' ? 'show' : ''
-            }`}
+            className={`dropdown-menu ${openDropdown === 'educationAdvantage' ? 'show' : ''}`}
           >
-            <a
-              href='/Why-Choose-Singapore'
-              onClick={() => navigate("/Why-Choose-Singapore")}
+            <Link
+              to="/Why-Choose-Singapore"
+              onClick={handleClose}
             >
               五大優勢
-            </a>
+            </Link>
           </div>
         </div>
 
-        <a
-          href='/#services'
+        <Link
+          to="/#services"
           onClick={() => {
             handleClose();
             scrollToSection('services');
           }}
         >
           服務項目
-        </a>
-
-        <a
-          href='/#contact'
+        </Link>
+        <Link
+          to="/#contact"
           onClick={() => {
             handleClose();
             scrollToSection('contact');
           }}
         >
           聯繫我們
-        </a>
+        </Link>
       </nav>
     </header>
   );
