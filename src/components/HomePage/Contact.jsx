@@ -17,17 +17,11 @@ const ContactUs = () => {
   const sendEmail = async (e) => {
     e.preventDefault();
 
-  // 暫時移除 Honeypot 測試
-  // if (e.target.hidden_field.value !== "") {
-  //   setStatusMsg("系統偵測異常提交，請稍後再試。");
-  //   return;
-  // }
-
     setIsSubmitting(true);
     setStatusMsg("");
 
     try {
-      // 先執行reCAPTCHA驗證
+      // Execute invisible reCAPTCHA and get token
       const token = await recaptchaRef.current.executeAsync();
       recaptchaRef.current.reset();
 
@@ -37,7 +31,10 @@ const ContactUs = () => {
         return;
       }
 
-      // 使用 sendForm 自動從 form 取得資料並發送郵件
+      // Put token inside hidden input field for EmailJS to send
+      form.current["g-recaptcha-response"].value = token;
+
+      // Send form including the captcha token to EmailJS
       await emailjs.sendForm(
         "service_80x6z4c",
         "template_xepo35a",
@@ -97,14 +94,8 @@ const ContactUs = () => {
           {statusMsg && <div className="status-message">{statusMsg}</div>}
 
           <form className="contact-form" ref={form} onSubmit={sendEmail}>
-            {/* Honeypot隱藏欄位 */}
-            <input
-              type="text"
-              name="hidden_field"
-              style={{ display: "none" }}
-              tabIndex="-1"
-              autoComplete="off"
-            />
+            {/* Hidden reCAPTCHA input field for token */}
+            <input type="hidden" name="g-recaptcha-response" />
 
             <div className="form-group">
               <label htmlFor="name">名字：</label>
@@ -192,18 +183,13 @@ const ContactUs = () => {
               />
             </div>
 
-            {/* Invisible reCAPTCHA */}
             <ReCAPTCHA
               sitekey={RECAPTCHA_SITE_KEY}
               size="invisible"
               ref={recaptchaRef}
             />
 
-            <button
-              className="contact-submit"
-              type="submit"
-              disabled={isSubmitting}
-            >
+            <button className="contact-submit" type="submit" disabled={isSubmitting}>
               {isSubmitting ? "送出中..." : "送出表單"}
             </button>
           </form>
