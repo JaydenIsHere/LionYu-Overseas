@@ -8,11 +8,11 @@
   padding: 2.5rem 1rem;
 }
 
-.form-group #message{
-background-color:#faf7f3;
-height:100px;
-border-radius: 10px;
-padding: 0.5rem;
+.form-group #message {
+  background-color: #faf7f3;
+  height: 100px;
+  border-radius: 10px;
+  padding: 0.5rem;
 }
 
 .contact-container {
@@ -105,7 +105,8 @@ padding: 0.5rem;
 }
 
 .form-group input,
-.form-group select {
+.form-group select,
+.form-group textarea {
   width: 100%;
   padding: 0.7em 0.85em;
   border: 1px solid #e5e7eb;
@@ -117,9 +118,27 @@ padding: 0.5rem;
 }
 
 .form-group input:focus,
-.form-group select:focus {
+.form-group select:focus,
+.form-group textarea:focus {
   border: 1.5px solid #c48a2d;
   outline: none;
+}
+
+/* Checkbox group styling */
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  font-weight: normal;
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin-right: 6px;
 }
 
 .contact-submit {
@@ -141,6 +160,7 @@ padding: 0.5rem;
   background: #a77610;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
   .contact-container {
     flex-direction: column;
@@ -148,7 +168,7 @@ padding: 0.5rem;
   }
   .qr-code-container,
   .contact-methods {
-        margin: 0 auto;
+    margin: 0 auto;
     max-width: 100%;
     flex: 1 1 auto;
     margin-bottom: 20px;

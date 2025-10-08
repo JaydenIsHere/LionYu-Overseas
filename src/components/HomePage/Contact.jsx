@@ -1,66 +1,56 @@
 import React, { useRef, useState } from "react";
-import ReCAPTCHA from "react-google-recaptcha";
-import emailjs from "@emailjs/browser";
 import "./Contact.css";
 import { FaWhatsapp } from "react-icons/fa";
 import { SiLine } from "react-icons/si";
 import lineQRCode from "../../images/LineQRCode.jpg";
 
-const RECAPTCHA_SITE_KEY = "6LdDzeErAAAAAEwoJgpzgbkoeh0YZG6Kwa-jx2_f";
+const scriptUrl = "https://script.google.com/macros/s/AKfycby2c_pLWd1YrYekjgJ4yv3QwWyUA4zi6cxmqLZw-sV69soZfMv8aFXJrQMUeV86jm9V/exec";
 
 const ContactUs = () => {
   const form = useRef();
-  const recaptchaRef = useRef(null);
   const [statusMsg, setStatusMsg] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const sendEmail = async (e) => {
-    e.preventDefault();
+  const sendToGoogleSheet = async (e) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+  setStatusMsg("");
 
-    setIsSubmitting(true);
-    setStatusMsg("");
+  const selectedAgeGroups = Array.from(e.target.querySelectorAll('input[name="school_age_group"]:checked'))
+                                .map(el => el.value)
+                                .join(", ");
 
-    try {
-      // Get Google reCAPTCHA token
-      const token = await recaptchaRef.current.executeAsync();
-      recaptchaRef.current.reset();
+  const formData = new URLSearchParams({
+    parent_name: e.target.parent_name.value,
+    email: e.target.email.value,
+    country: e.target.country.value,
+    service: e.target.service.value,
+    appointment_datetime: e.target.appointment_datetime.value,
+    number_of_children: e.target.number_of_children.value,
+    school_age_group: selectedAgeGroups,
+    enrol_date: e.target.enrol_date.value,
+    how_found: e.target.how_found.value,
+    message: e.target.message.value || "",
+  });
 
-      if (!token) {
-        setStatusMsg("請完成驗證後再送出表單");
-        setIsSubmitting(false);
-        return;
-      }
+  try {
+    await fetch(scriptUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: formData.toString(),
+    });
+  } catch (error) {
+    console.error("Google Sheets error:", error);
+  } finally {
+    // 不論成功或失敗，都顯示同一訊息並清空表單
+    setStatusMsg("我們的團隊會盡快與你聯繫");
+    e.target.reset();
+    setIsSubmitting(false);
+  }
+};
 
-      const formData = new FormData(form.current);
-
-      // Build template params manually including g-recaptcha-response token
-      const templateParams = {
-        name: formData.get("name"),
-        country: formData.get("country"),
-        age_group: formData.get("age_group"),
-        enrol_date: formData.get("enrol_date"),
-        how_found: formData.get("how_found"),
-        email: formData.get("email"),
-        message: formData.get("message") || "",
-        "g-recaptcha-response": token,
-      };
-
-      await emailjs.send(
-        "service_80x6z4c",
-        "template_xepo35a",
-        templateParams,
-        "fv9zS6Tde0WVeFASq"
-      );
-
-      setStatusMsg("表單已成功送出，謝謝您的聯絡！");
-      form.current.reset();
-    } catch (error) {
-      setStatusMsg("送出失敗，請稍後再試。");
-      console.error("EMAILJS ERROR:", error);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   return (
     <section className="contact-section" id="contact">
@@ -102,8 +92,7 @@ const ContactUs = () => {
 
           {statusMsg && <div className="status-message">{statusMsg}</div>}
 
-          <form className="contact-form" ref={form} onSubmit={sendEmail}>
-
+          <form ref={form} className="contact-form" onSubmit={sendToGoogleSheet}>
             {/* Honeypot Hidden Field */}
             <input
               type="text"
@@ -114,12 +103,24 @@ const ContactUs = () => {
             />
 
             <div className="form-group">
-              <label htmlFor="name">名字：</label>
+              <label htmlFor="parent_name">家長姓名：</label>
               <input
                 type="text"
-                id="name"
-                name="name"
-                placeholder="輸入名字"
+                id="parent_name"
+                name="parent_name"
+                placeholder="請輸入家長姓名"
+                required
+                disabled={isSubmitting}
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="email">電郵地址：</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="請輸入電郵地址"
                 required
                 disabled={isSubmitting}
               />
@@ -131,46 +132,121 @@ const ContactUs = () => {
                 type="text"
                 id="country"
                 name="country"
-                placeholder="輸入所在地"
+                placeholder="請輸入所在地"
                 required
                 disabled={isSubmitting}
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="age-group">年齡區間：</label>
+              <label htmlFor="service">服務項目：</label>
               <select
-                id="age-group"
-                name="age_group"
+                id="service"
+                name="service"
                 defaultValue=""
                 required
                 disabled={isSubmitting}
               >
-                <option value="" disabled>
-                  請選擇年齡區間
-                </option>
-                <option value="Nursery-Kindergarten">Nursery-Kindergarten (Preschool)</option>
-                <option value="Primary">Primary</option>
-                <option value="Secondary">Secondary (Middle Years)</option>
-                <option value="HighSchool">High School</option>
+                <option value="" disabled>請選擇服務項目</option>
+                <option value="外國留學">外國留學</option>
+                <option value="國內轉學">國內轉學</option>
+                <option value="移居-企業家">移居-企業家</option>
+                <option value="短期留學，語言學校">短期留學，語言學校</option>
+                <option value="國際學校開放日">國際學校開放日</option>
+                <option value="其他">其他</option>
               </select>
             </div>
 
             <div className="form-group">
-              <label htmlFor="enrol-date">期望入學時間：</label>
+              <label htmlFor="appointment_datetime">免費30分鐘線上諮詢（您方便的日期與時間）：</label>
+              <input
+                type="datetime-local"
+                id="appointment_datetime"
+                name="appointment_datetime"
+                required
+                disabled={isSubmitting}
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="number_of_children">您有幾個孩子：</label>
+              <input
+                type="number"
+                id="number_of_children"
+                name="number_of_children"
+                placeholder="請輸入孩子數量"
+                min="0"
+                required
+                disabled={isSubmitting}
+              />
+            </div>
+
+            <div className="form-group">
+              <label>您想找哪個年齡的學校：</label>
+              <div className="checkbox-group">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="school_age_group"
+                    value="幼稚園"
+                    disabled={isSubmitting}
+                  />
+                  幼稚園
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="school_age_group"
+                    value="小學"
+                    disabled={isSubmitting}
+                  />
+                  小學
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="school_age_group"
+                    value="中學"
+                    disabled={isSubmitting}
+                  />
+                  中學
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="school_age_group"
+                    value="高中"
+                    disabled={isSubmitting}
+                  />
+                  高中
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="school_age_group"
+                    value="大學"
+                    disabled={isSubmitting}
+                  />
+                  大學
+                </label>
+              </div>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="enrol_date">預計入學日期：</label>
               <input
                 type="date"
-                id="enrol-date"
+                id="enrol_date"
                 name="enrol_date"
                 disabled={isSubmitting}
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="how-found">您是如何得知我們的？</label>
+              <label htmlFor="how_found">您是如何得知我們的：</label>
               <input
                 type="text"
-                id="how-found"
+                id="how_found"
                 name="how_found"
                 placeholder="請輸入"
                 disabled={isSubmitting}
@@ -178,19 +254,7 @@ const ContactUs = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="email">E-mail：</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="輸入信箱"
-                required
-                disabled={isSubmitting}
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="message">補充訊息（選填）：</label>
+              <label htmlFor="message">補充訊息：</label>
               <textarea
                 id="message"
                 name="message"
@@ -199,13 +263,6 @@ const ContactUs = () => {
               />
             </div>
 
-            {/* Invisible reCAPTCHA */}
-            <ReCAPTCHA
-              sitekey={RECAPTCHA_SITE_KEY}
-              size="invisible"
-              ref={recaptchaRef}
-            />
-
             <button
               className="contact-submit"
               type="submit"
@@ -213,6 +270,7 @@ const ContactUs = () => {
             >
               {isSubmitting ? "送出中..." : "送出表單"}
             </button>
+
           </form>
         </div>
       </div>
