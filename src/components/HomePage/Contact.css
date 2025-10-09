@@ -126,19 +126,25 @@
 
 /* Checkbox group styling */
 .checkbox-group {
-  display: flex;
+    display: flex;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 12px 20px;
 }
 
 .checkbox-group label {
-  display: flex;
+   display: inline-flex;
   align-items: center;
-  font-weight: normal;
+  gap: 6px;
+  line-height: 1.2; /* ensure text doesn't push checkbox down */
+  font-size: 1rem;
+  white-space: nowrap; /* keep text in one line if possible */
 }
 
 .checkbox-group input[type="checkbox"] {
-  margin-right: 6px;
+  margin: 0; /* remove inconsistent margin from browsers */
+  width: 18px;
+  height: 18px;
+  accent-color: #c48a2d; /* optional - match your theme color */
 }
 
 .contact-submit {
@@ -180,4 +186,15 @@
   .contact-title {
     font-size: 1.8rem;
   }
+
+   .checkbox-group {
+    justify-content: flex-start; /* prevent uneven center alignment */
+    gap: 10px 15px;
+  }
+
+  .checkbox-group label {
+    flex: 1 1 45%; /* make each item take up about half width on mobile */
+    white-space: normal; /* allow wrapping if needed */
+  }
+
 }
