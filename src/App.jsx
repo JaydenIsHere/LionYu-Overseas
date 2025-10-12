@@ -9,6 +9,7 @@ import WhyChooseSingapore from './pages/WhyChooseSingapore.jsx';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
+
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
