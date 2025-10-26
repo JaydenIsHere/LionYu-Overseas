@@ -62,6 +62,27 @@
   margin-bottom: 1.5rem;
 }
 
+.contact-email {
+  text-align: center;
+  margin-top: -1rem;
+  margin-bottom: 1.2rem;
+  font-size: 1.05rem;
+  color: #444;
+  text-transform: none;
+}
+
+.contact-email a {
+  color: #c48a2d;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: none;
+}
+
+.contact-email a:hover {
+  text-decoration: underline;
+  
+}
+
 .social-icons {
   display: flex;
   justify-content: center;

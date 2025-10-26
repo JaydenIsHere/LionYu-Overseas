@@ -35,6 +35,10 @@ const Footer = () => (
               <FaWhatsapp />
             </a>
           </div>
+          {/* Add company email under the Line icon */}
+<p className="contact-email">
+  聯絡信箱：<a href="mailto:hello@lionyuoverseas.com">hello@lionyuoverseas.com</a>
+</p>
         </div>
         {/* Column 3: Logo (right) */}
         <div className="footer-column logo-column">

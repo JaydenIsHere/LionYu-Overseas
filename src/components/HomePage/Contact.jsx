@@ -85,7 +85,10 @@ const ContactUs = () => {
               <FaWhatsapp />
             </a>
           </div>
-
+{/* Add company email under the Line icon */}
+<p className="contact-email">
+  聯絡信箱：<a href="mailto:hello@lionyuoverseas.com">hello@lionyuoverseas.com</a>
+</p>
           <div className="contact-info-list">
             <p>填寫諮詢表單，專人1日內主動聯繫</p>
           </div>
